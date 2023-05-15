@@ -188,7 +188,9 @@ def generate_aiconfig_automatic(user_prompt) -> AIConfig:
     output = create_chat_completion(messages, CFG.fast_llm_model)
 
     # Debug LLM Output
+
     logger.debug(f"AI Config Generator Raw Output: {output}")
+    logger.debug("AI Config Generator Raw Input: {}".format(messages))
 
     # Parse the output
     ai_name = re.search(r"Name(?:\s*):(?:\s*)(.*)", output, re.IGNORECASE).group(1)
