@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from autogpt.commands.command import command
 
-MOKE_DATA = """
+MOCK_DATA = """
 1,Extended business hours
 2,Lower the minimum delivery fee
 """
@@ -23,4 +23,4 @@ def query_store_data(historical_store_quality_score: str):
     Returns:
         A result string from related docs
     """
-    return "MOCK_DATE"
+    return MOCK_DATA
