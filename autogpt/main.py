@@ -120,19 +120,20 @@ def run_auto_gpt(
     command_registry = CommandRegistry()
 
     command_categories = [
-        "autogpt.commands.analyze_code",
-        "autogpt.commands.audio_text",
-        "autogpt.commands.execute_code",
-        "autogpt.commands.file_operations",
-        "autogpt.commands.git_operations",
-        "autogpt.commands.google_search",
-        "autogpt.commands.image_gen",
-        "autogpt.commands.improve_code",
-        "autogpt.commands.twitter",
-        "autogpt.commands.web_selenium",
-        "autogpt.commands.write_tests",
-        "autogpt.app",
-        "autogpt.commands.task_statuses",
+        "autogpt.commands.business_terms_or_rules_explain",
+        "autogpt.commands.query_historical_store_data",
+        # "autogpt.commands.audio_text",
+        # "autogpt.commands.execute_code",
+        # "autogpt.commands.file_operations",
+        # "autogpt.commands.git_operations",
+        # "autogpt.commands.google_search",
+        # "autogpt.commands.image_gen",
+        # "autogpt.commands.improve_code",
+        # "autogpt.commands.twitter",
+        # "autogpt.commands.web_selenium",
+        # "autogpt.commands.write_tests",
+        # "autogpt.app",
+        # "autogpt.commands.task_statuses",
     ]
     logger.debug(
         f"The following command categories are disabled: {cfg.disabled_command_categories}"
