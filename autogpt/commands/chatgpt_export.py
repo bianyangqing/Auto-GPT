@@ -5,11 +5,11 @@ from autogpt.commands.command import command
 
 
 @command(
-    "business_expert",
-    "Explain any business terms or rules that you don't understand.Give you some additional information about a topic",
-    '"question": "<question>"',
+    "chatgpt_export",
+    "If you do not know what to do, you can ask this command for help. before ask this command,you should ask business_expert for some knowledge.The prompt for this command should using the format like 'knowledge:XXXX\ntask:XXXX'",
+    '"prompt": "<prompt>"',
 )
-def query_knowledge(question: str) -> list[str]:
+def ask(prompt: str) -> list[str]:
     """
     Invoke the vector retrieval service to query and question-related doc
 
