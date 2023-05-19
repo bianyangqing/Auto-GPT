@@ -39,7 +39,7 @@ def run_auto_gpt(
     install_plugin_deps: bool,
 ):
     # Configure logging before we do anything else.
-    logger.set_level(logging.DEBUG)
+    logger.set_level(logging.INFO)
     logger.speak_mode = speak
 
     cfg = Config()
