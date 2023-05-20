@@ -18,38 +18,7 @@ Quality commodity rate :80
 Menu richness score :68 
 Business responsibility cancellation rate score :70 
 Meal reporting rate :80 
-''',
-    "20230517":''' 
-Operating hours :45 
-Peak hours :75 
-Minimum delivery score :81 
-Store richness score :32 
-Service richness score :80 
-Marketing activity richness score :77 
-The manual response rate of the recent 7 days of poor evaluation :32 
-IM online response rate :89 
-Store score :70 
-Quality commodity rate :90 
-Menu richness score :68 
-Business responsibility cancellation rate score :86 
-Meal reporting rate :80 
-''',
-    "20230516":''' 
-Operating hours :45 
-Peak hours :75 
-Minimum delivery score :81 
-Store richness score :32 
-Service richness score :80 
-Marketing activity richness score :77 
-The manual response rate of the recent 7 days of poor evaluation :32 
-IM online response rate :89 
-Store score :70 
-Quality commodity rate :90 
-Menu richness score :68 
-Business responsibility cancellation rate score :90
-Meal reporting rate :85 
-''',
-
+'''
 }
 
 @command(
