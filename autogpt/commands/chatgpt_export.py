@@ -5,7 +5,7 @@ from autogpt.commands.command import command
 
 
 @command(
-    "chatgpt_export",
+    "chatgpt_expert",
     "If you do not know what to do, you can ask this command for help. before ask this command,you should ask business_expert for some knowledge.The prompt for this command should using the format like 'business knowledge:'response from business_expert'\ntask:'the task you want to do'",
     '"prompt": "<prompt>"',
 )

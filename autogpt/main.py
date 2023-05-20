@@ -123,7 +123,7 @@ def run_auto_gpt(
         "autogpt.commands.business_terms_or_rules_explain",
         "autogpt.commands.query_historical_store_data",
         # "autogpt.commands.store_quality_score_improvement_adviser",
-        "autogpt.commands.chatgpt_export",
+        "autogpt.commands.chatgpt_expert",
         # "autogpt.commands.audio_text",
         # "autogpt.commands.execute_code",
         # "autogpt.commands.file_operations",

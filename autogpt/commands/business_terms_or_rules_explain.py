@@ -6,7 +6,7 @@ from autogpt.commands.command import command
 
 @command(
     "business_expert",
-    "Before you call chatgpt_export command, you should call this command to get some export knowledge.Explain any business terms or rules that you don't understand.Give you some additional information about a topic.",
+    "Before you call chatgpt_expert command, you should call this command to get some export knowledge.Explain any business terms or rules that you don't understand.Give you some additional information about a topic. Question for this command can be the task",
     '"question": "<question>"',
 )
 def query_knowledge(question: str) -> list[str]:

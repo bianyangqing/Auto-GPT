@@ -12,7 +12,7 @@ CFG = Config()
 
 DEFAULT_TRIGGERING_PROMPT = (
     "Determine which next command to use, and respond using the format specified above:"
-    "Pay attention:Before you call chatgpt_export command, you should call business_expert to get some business knowledge"
+    "Pay attention:Before you call chatgpt_expert command, you should call business_expert to get some business knowledge"
 )
 
 
