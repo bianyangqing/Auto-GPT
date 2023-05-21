@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from colorama import Fore, Style
+import time
 
 from autogpt.app import execute_command, get_command
 from autogpt.config import Config
@@ -108,6 +109,7 @@ class Agent:
                     "Continuous Limit Reached: ", Fore.YELLOW, f"{cfg.continuous_limit}"
                 )
                 break
+            time.sleep(5)
             # Send message to AI, get response
             with Spinner("Thinking... "):
                 assistant_reply = chat_with_ai(
