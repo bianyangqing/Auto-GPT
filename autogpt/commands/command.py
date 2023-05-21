@@ -38,7 +38,7 @@ class Command:
         return self.method(*args, **kwargs)
 
     def __str__(self) -> str:
-        return f"{self.name}: {self.description}, args: {self.signature}"
+        return f"command name:\"{self.name}\"; command description:\"{self.description}\"; args: \"{self.signature}\""
 
 
 class CommandRegistry:

@@ -43,14 +43,19 @@ def build_default_prompt_generator() -> PromptGenerator:
     )
 
     # Add resources to the PromptGenerator object
-    prompt_generator.add_resource(
-        "Internet access for searches and information gathering."
-    )
-    prompt_generator.add_resource("Long Term memory management.")
+    # prompt_generator.add_resource(
+    #     "Internet access for searches and information gathering."
+    # )
+    # prompt_generator.add_resource("Long Term memory management.")
     prompt_generator.add_resource(
         "GPT-3.5 powered Agents for delegation of simple tasks."
     )
     prompt_generator.add_resource("File output.")
+
+    prompt_generator.add_resource("business_expert command can provide more context or details about the term you are not familiar with")
+
+    prompt_generator.add_resource("provided with context or details chatgpt_expert can give solutions of the task ")
+
 
     # Add performance evaluations to the PromptGenerator object
     prompt_generator.add_performance_evaluation(

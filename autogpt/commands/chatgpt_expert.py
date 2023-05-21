@@ -6,10 +6,12 @@ from autogpt.commands.command import command
 
 @command(
     "chatgpt_expert",
-    "If you do not know what to do, you can ask this command for help. before ask this command,you should ask business_expert for some knowledge.The prompt for this command should using the format like 'business knowledge:'response from business_expert'\ntask:'the task you want to do'",
-    '"prompt": "<prompt>"',
+    "The args for this command should using the format like "
+    "'prompt:'context or details about the task'\n"
+    "task:'the task you want to do'",
+    '"args": "<args>"',
 )
-def ask(prompt: str) -> list[str]:
+def ask(args: str) -> list[str]:
     """
     Invoke the vector retrieval service to query and question-related doc
 
