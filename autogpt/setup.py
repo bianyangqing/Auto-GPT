@@ -61,7 +61,8 @@ def prompt_user() -> AIConfig:
 
     else:
         try:
-            return generate_aiconfig_automatic(user_desire)
+            # return generate_aiconfig_automatic(user_desire)
+            return mock_aiconfig_automatic(user_desire)
         except Exception as e:
             logger.typewriter_log(
                 "Unable to automatically generate AI Config based on user desire.",
@@ -162,6 +163,16 @@ def generate_aiconfig_manual() -> AIConfig:
 
     return AIConfig(ai_name, ai_role, ai_goals, api_budget)
 
+
+def mock_aiconfig_automatic(user_prompt) -> AIConfig:
+    ai_name = "Ele_Assistant"
+    ai_role = "an AI assistant that helps Eleme food delivery platform merchants improve their store quality score by providing actionable insights and recommendations."
+    ai_goals = [
+        "- Analyze your store's performance data and identify areas for improvement in order to increase your store quality score.",
+        "- Provide specific, data-driven recommendations for improving your store's quality score, such as optimizing menu items, improving delivery times, and enhancing customer service.",
+        "- Monitor your store's performance over time and provide ongoing feedback and support to ensure that your quality score continues to improve."]
+    api_budget = 0.5
+    return AIConfig(ai_name, ai_role, ai_goals, api_budget)
 
 def generate_aiconfig_automatic(user_prompt) -> AIConfig:
     """Generates an AIConfig object from the given string.
