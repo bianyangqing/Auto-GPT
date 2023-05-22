@@ -165,8 +165,8 @@ class AIConfig:
         # Construct full prompt
         full_prompt = f"You are {prompt_generator.name}, {prompt_generator.role}\n{prompt_start}\n"
 
-        full_prompt += f"TASK:{self.ai_task}\n"
-        full_prompt += "\nLet's follow the steps to complete the TASK:\n\n"
+        full_prompt += f"\nTASK:{self.ai_task}\n"
+        full_prompt += "\nLet's follow the steps to complete the TASK:\n"
         for i, goal in enumerate(self.ai_goals):
             full_prompt += f"{i+1}. {goal}\n"
         if self.api_budget > 0.0:
