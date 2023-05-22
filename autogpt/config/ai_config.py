@@ -111,7 +111,8 @@ class AIConfig:
             yaml.dump(config, file, allow_unicode=True)
 
     def construct_full_prompt(
-        self, prompt_generator: Optional[PromptGenerator] = None
+        self, prompt_generator: Optional[PromptGenerator] = None,
+            current_context: list = []
     ) -> str:
         """
         Returns a prompt to the user with the class information in an organized fashion.
@@ -136,7 +137,7 @@ class AIConfig:
 
         cfg = Config()
         if prompt_generator is None:
-            prompt_generator = build_default_prompt_generator()
+            prompt_generator = build_default_prompt_generator(current_context)
         prompt_generator.goals = self.ai_goals
         prompt_generator.name = self.ai_name
         prompt_generator.role = self.ai_role

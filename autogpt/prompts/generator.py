@@ -19,6 +19,8 @@ class PromptGenerator:
         self.resources = []
         self.performance_evaluation = []
         self.goals = []
+
+        self.current_context = []
         self.command_registry = None
         self.name = "Bob"
         self.role = "AI"
@@ -97,6 +99,15 @@ class PromptGenerator:
             resource (str): The resource to be added.
         """
         self.resources.append(resource)
+
+    def add_current_context(self, context: str) -> None:
+        """
+        Add a resource to the resources list.
+
+        Args:
+            resource (str): The resource to be added.
+        """
+        self.current_context.append(context)
 
     def add_performance_evaluation(self, evaluation: str) -> None:
         """

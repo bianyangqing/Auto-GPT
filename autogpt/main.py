@@ -20,7 +20,12 @@ from autogpt.utils import (
 )
 from autogpt.workspace import Workspace
 from scripts.install_plugin_deps import install_plugin_dependencies
-
+STORE_ID = "12343516"
+STORE_NAME = "KFC"
+CURRENT_CONTEXT = [
+    f"store id:{STORE_ID}",
+    f"store name:{STORE_NAME}",
+                   ]
 
 def run_auto_gpt(
     continuous: bool,
@@ -135,7 +140,7 @@ def run_auto_gpt(
         # "autogpt.commands.web_selenium",
         # "autogpt.commands.write_tests",
         # "autogpt.app",
-        # "autogpt.commands.task_statuses",
+        "autogpt.commands.task_statuses",
     ]
     logger.debug(
         f"The following command categories are disabled: {cfg.disabled_command_categories}"
@@ -171,7 +176,7 @@ def run_auto_gpt(
         "Using memory of type:", Fore.GREEN, f"{memory.__class__.__name__}"
     )
     logger.typewriter_log("Using Browser:", Fore.GREEN, cfg.selenium_web_browser)
-    system_prompt = ai_config.construct_full_prompt()
+    system_prompt = ai_config.construct_full_prompt(current_context=CURRENT_CONTEXT)
     if cfg.debug_mode:
         logger.typewriter_log("Prompt:", Fore.GREEN, system_prompt)
 

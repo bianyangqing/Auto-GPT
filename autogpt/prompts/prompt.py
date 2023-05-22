@@ -16,7 +16,7 @@ DEFAULT_TRIGGERING_PROMPT = (
 )
 
 
-def build_default_prompt_generator() -> PromptGenerator:
+def build_default_prompt_generator(current_context: list) -> PromptGenerator:
     """
     This function generates a prompt string that includes various constraints,
         commands, resources, and performance evaluations.
@@ -27,6 +27,11 @@ def build_default_prompt_generator() -> PromptGenerator:
 
     # Initialize the PromptGenerator object
     prompt_generator = PromptGenerator()
+
+    if current_context:
+        for context in current_context:
+            prompt_generator.add_current_context(context)
+
 
     # Add constraints to the PromptGenerator object
     prompt_generator.add_constraint(
