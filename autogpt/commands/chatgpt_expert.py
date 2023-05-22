@@ -10,7 +10,7 @@ cfg = Config()
 @command(
     "chatgpt_expert",
     "The args for this command should using the format like "
-    "'prompt:'context or details about the task, provide as much information as you can \n"
+    "'prompt:'context or details about the task, include all return value of all executed commands \n"
     "'task:'the task you want to do'",
     '"args": "<args>"',
 )
