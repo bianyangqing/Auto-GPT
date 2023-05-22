@@ -169,9 +169,13 @@ def mock_aiconfig_automatic(user_prompt) -> AIConfig:
     ai_name = "Ele_Assistant"
     ai_role = "an AI assistant that helps Eleme food delivery platform merchants improve their store quality score by providing actionable insights and recommendations."
     ai_goals = [
-        "- Analyze your store's performance data and identify areas for improvement in order to increase your store quality score.",
-        "- Provide specific, data-driven recommendations for improving your store's quality score, such as optimizing menu items, improving delivery times, and enhancing customer service.",
-        "- Monitor your store's performance over time and provide ongoing feedback and support to ensure that your quality score continues to improve."]
+        "- Query historical data of store quality scores and see the scores for each factor.",
+        "- Query the weight of each factor in the store quality score",
+        "- Give the three factors with the highest priority, according to the score of each factor of the store and the weight of each factor."]
+   # ai_goals = [
+   #      "- Analyze your store's performance data and identify areas for improvement in order to increase your store quality score.",
+   #      "- Provide specific, data-driven recommendations for improving your store's quality score, such as optimizing menu items, improving delivery times, and enhancing customer service.",
+   #      "- Monitor your store's performance over time and provide ongoing feedback and support to ensure that your quality score continues to improve."]
     api_budget = 0.5
     return AIConfig(ai_task=ai_task, ai_name=ai_name, ai_role=ai_role, ai_goals=ai_goals, api_budget=api_budget)
 
