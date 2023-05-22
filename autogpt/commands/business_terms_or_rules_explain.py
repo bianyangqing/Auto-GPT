@@ -28,7 +28,7 @@ Store quality scoring rules:\\n
     "args for this command can be the task",
     '"args": "<args>"',
 )
-def query_knowledge(args: str) -> list[str]:
+def query_knowledge(args: str) -> str:
     """
     Invoke the vector retrieval service to query and question-related doc
 
@@ -38,4 +38,4 @@ def query_knowledge(args: str) -> list[str]:
     Returns:
         A result string from related docs
     """
-    return ["1","2"]
+    return MOCK

@@ -11,7 +11,7 @@ from autogpt.commands.command import command
     "'task:'the task you want to do'",
     '"args": "<args>"',
 )
-def ask(args: str) -> list[str]:
+def ask(args: str) -> str:
     """
     Invoke the vector retrieval service to query and question-related doc
 
