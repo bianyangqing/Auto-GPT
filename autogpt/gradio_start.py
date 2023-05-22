@@ -21,7 +21,7 @@ def stream_chat(question, history=None, box_size=20):
             history.pop()
 
         updates = []
-        delta_content = i
+        delta_content = i.__str__()
         delta_content = " " if delta_content is None else delta_content
         content = content + delta_content
 
