@@ -7,8 +7,8 @@ from autogpt.commands.command import command
 @command(
     "chatgpt_expert",
     "The args for this command should using the format like "
-    "'prompt:'context or details about the task'\n"
-    "task:'the task you want to do'",
+    "'prompt:'context or details about the task, provide as much information as you can \n"
+    "'task:'the task you want to do'",
     '"args": "<args>"',
 )
 def ask(args: str) -> list[str]:

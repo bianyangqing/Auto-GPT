@@ -165,6 +165,7 @@ def generate_aiconfig_manual() -> AIConfig:
 
 
 def mock_aiconfig_automatic(user_prompt) -> AIConfig:
+    ai_task = "How can I improve my store quality score"
     ai_name = "Ele_Assistant"
     ai_role = "an AI assistant that helps Eleme food delivery platform merchants improve their store quality score by providing actionable insights and recommendations."
     ai_goals = [
@@ -172,7 +173,7 @@ def mock_aiconfig_automatic(user_prompt) -> AIConfig:
         "- Provide specific, data-driven recommendations for improving your store's quality score, such as optimizing menu items, improving delivery times, and enhancing customer service.",
         "- Monitor your store's performance over time and provide ongoing feedback and support to ensure that your quality score continues to improve."]
     api_budget = 0.5
-    return AIConfig(ai_name, ai_role, ai_goals, api_budget)
+    return AIConfig(ai_task=ai_task, ai_name=ai_name, ai_role=ai_role, ai_goals=ai_goals, api_budget=api_budget)
 
 def generate_aiconfig_automatic(user_prompt) -> AIConfig:
     """Generates an AIConfig object from the given string.
@@ -217,4 +218,4 @@ def generate_aiconfig_automatic(user_prompt) -> AIConfig:
     ai_goals = re.findall(r"(?<=\n)-\s*(.*)", output)
     api_budget = 0.0  # TODO: parse api budget using a regular expression
 
-    return AIConfig(ai_name, ai_role, ai_goals, api_budget)
+    return AIConfig(ai_task= user_prompt, ai_name=ai_name, ai_role=ai_role, ai_goals=ai_goals, api_budget=api_budget)

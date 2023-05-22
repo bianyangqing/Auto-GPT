@@ -31,6 +31,7 @@ class AIConfig:
 
     def __init__(
         self,
+        ai_task: str = "",
         ai_name: str = "",
         ai_role: str = "",
         ai_goals: list | None = None,
@@ -49,6 +50,7 @@ class AIConfig:
         """
         if ai_goals is None:
             ai_goals = []
+        self.ai_task = ai_task
         self.ai_name = ai_name
         self.ai_role = ai_role
         self.ai_goals = ai_goals
@@ -158,8 +160,13 @@ class AIConfig:
 
             prompt_start += f"\nThe OS you are running on is: {os_info}"
 
+
+
         # Construct full prompt
-        full_prompt = f"You are {prompt_generator.name}, {prompt_generator.role}\n{prompt_start}\n\nGOALS:\n\n"
+        full_prompt = f"You are {prompt_generator.name}, {prompt_generator.role}\n{prompt_start}\n"
+
+        full_prompt += f"TASK:{self.ai_task}\n"
+        full_prompt += "\nLet's follow the steps to complete the TASK:\n\n"
         for i, goal in enumerate(self.ai_goals):
             full_prompt += f"{i+1}. {goal}\n"
         if self.api_budget > 0.0:
