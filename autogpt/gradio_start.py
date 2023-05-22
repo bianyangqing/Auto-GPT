@@ -8,7 +8,7 @@ MAX_BOXES = 20
 
 def run(user_task: str =None):
     from autogpt.main import run_auto_gpt
-    run_auto_gpt(
+    for value in run_auto_gpt(
         continuous=True,
         continuous_limit=None,
         ai_settings=None,
@@ -24,24 +24,25 @@ def run(user_task: str =None):
         workspace_directory=None,
         install_plugin_deps=False,
         user_task=user_task
-    )
+    ):
+        yield value
 
 def stream_chat(question, history=None, box_size=20):
 
-    run(question)
+
 
     if history is None:
         history = []
 
     content = ""
-    for i in range(10):
+    for value in run(question):
         time.sleep(1)
         if len(content) > 0 and len(history) > 0:
             # history中去掉最后一个元素
             history.pop()
 
         updates = []
-        delta_content = i.__str__()
+        delta_content = value.__str__()
         delta_content = " " if delta_content is None else delta_content
         content = content + delta_content
 

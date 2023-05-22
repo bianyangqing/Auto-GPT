@@ -27,6 +27,11 @@ CURRENT_CONTEXT = [
     f"store name:{STORE_NAME}",
                    ]
 
+
+def build_ai_config_msg(ai_config):
+    return "任务拆解完成\n" + "\n".join(ai_config.ai_goals)
+
+
 def run_auto_gpt(
     continuous: bool,
     continuous_limit: int,
@@ -157,6 +162,7 @@ def run_auto_gpt(
 
     ai_name = ""
     ai_config = construct_main_ai_config(user_task)
+    yield build_ai_config_msg(ai_config)
     ai_config.command_registry = command_registry
     # print(prompt)
     # Initialize variables
