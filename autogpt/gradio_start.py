@@ -34,6 +34,11 @@ def stream_chat(question, history=None, box_size=20):
         updates.append(gr.Textbox.update(value=""))
         yield [history] + updates
 
+
+def stream_chat1(question, history=None, box_size=20):
+    for value in stream_chat(question, history):
+        yield value
+
 with gr.Blocks() as demo:
     state = gr.State([])
     text_boxes = []
@@ -56,5 +61,5 @@ with gr.Blocks() as demo:
                 container=False)
         with gr.Column(scale=1):
             button = gr.Button("Generate")
-    button.click(stream_chat, [txt, state], [state] + text_boxes + [txt])
+    button.click(stream_chat1, [txt, state], [state] + text_boxes + [txt])
 demo.queue().launch(share=True, inbrowser=True)
