@@ -106,4 +106,20 @@ def main(
 
 
 if __name__ == "__main__":
-    main()
+    from autogpt.main import run_auto_gpt
+    run_auto_gpt(
+        continuous=True,
+        continuous_limit=None,
+        ai_settings=None,
+        skip_reprompt=False,
+        speak=False,
+        debug=False,
+        gpt3only=False,
+        gpt4only=False,
+        memory_type=None,
+        browser_name=None,
+        allow_downloads=False,
+        skip_news=False,
+        workspace_directory=None,
+        install_plugin_deps=False,
+    )
