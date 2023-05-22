@@ -162,7 +162,7 @@ class Agent:
 
             yield "NEXT ACTION: \n" + \
                   f"COMMAND = {command_name}  \n" + \
-                  f"ARGUMENTS = {arguments} \n\n"
+                  f"ARGUMENTS = {arguments} \n\n\n"
 
             if not cfg.continuous_mode and self.next_action_count == 0:
                 # ### GET USER AUTHORIZATION TO EXECUTE COMMAND ###

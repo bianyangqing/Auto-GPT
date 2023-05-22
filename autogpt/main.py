@@ -29,7 +29,7 @@ CURRENT_CONTEXT = [
 
 
 def build_ai_config_msg(ai_config):
-    return "Goals: \n" + "\n".join(ai_config.ai_goals)
+    return "Goals: \n" + "\n".join(ai_config.ai_goals) + "\n\n\n"
 
 
 def run_auto_gpt(
