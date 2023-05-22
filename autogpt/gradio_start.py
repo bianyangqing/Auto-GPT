@@ -6,7 +6,7 @@ NOTE_TXT = "【您可以这么提问】：\n" \
            "＊How can I improve my store quality score？\n"
 MAX_BOXES = 20
 
-def run():
+def run(user_task: str =None):
     from autogpt.main import run_auto_gpt
     run_auto_gpt(
         continuous=True,
@@ -23,11 +23,12 @@ def run():
         skip_news=False,
         workspace_directory=None,
         install_plugin_deps=False,
+        user_task=user_task
     )
 
 def stream_chat(question, history=None, box_size=20):
 
-    run()
+    run(question)
 
     if history is None:
         history = []

@@ -42,6 +42,7 @@ def run_auto_gpt(
     skip_news: bool,
     workspace_directory: str,
     install_plugin_deps: bool,
+    user_task:str = None
 ):
     # Configure logging before we do anything else.
     logger.set_level(logging.DEBUG)
@@ -155,7 +156,7 @@ def run_auto_gpt(
         command_registry.import_commands(command_category)
 
     ai_name = ""
-    ai_config = construct_main_ai_config()
+    ai_config = construct_main_ai_config(user_task)
     ai_config.command_registry = command_registry
     # print(prompt)
     # Initialize variables

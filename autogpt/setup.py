@@ -18,7 +18,7 @@ from autogpt.prompts.default_prompts import (
 CFG = Config()
 
 
-def prompt_user() -> AIConfig:
+def prompt_user(user_task: str = None) -> AIConfig:
     """Prompt the user for input
 
     Returns:
@@ -43,9 +43,13 @@ def prompt_user() -> AIConfig:
         speak_text=True,
     )
 
-    user_desire = utils.clean_input(
-        f"{Fore.LIGHTBLUE_EX}I want Auto-GPT to{Style.RESET_ALL}: "
-    )
+
+    if user_task :
+        user_desire = user_task
+    else:
+        user_desire = utils.clean_input(
+            f"{Fore.LIGHTBLUE_EX}I want Auto-GPT to{Style.RESET_ALL}: "
+        )
 
     if user_desire == "":
         user_desire = DEFAULT_USER_DESIRE_PROMPT  # Default prompt
