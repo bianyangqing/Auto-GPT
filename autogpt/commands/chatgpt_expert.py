@@ -1,8 +1,11 @@
 """Code evaluation module."""
 from __future__ import annotations
+from autogpt.llm.llm_utils import create_chat_completion
+from autogpt.config.config import Config
 
 from autogpt.commands.command import command
 
+cfg = Config()
 
 @command(
     "chatgpt_expert",
@@ -21,4 +24,5 @@ def ask(args: str) -> str:
     Returns:
         A result string from related docs
     """
-    return ["1","2"]
+    massage=[{"role": "user", "content": args}]
+    return create_chat_completion( massage, cfg.fast_llm_model)
