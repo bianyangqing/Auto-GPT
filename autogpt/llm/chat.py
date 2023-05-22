@@ -131,13 +131,14 @@ def chat_with_ai(
                 message_to_add = full_message_history[next_message_to_add_index]
 
                 tokens_to_add = count_message_tokens([message_to_add], model)
-                if current_tokens_used + tokens_to_add > send_token_limit:
-                    # save_memory_trimmed_from_context_window(
-                    #     full_message_history,
-                    #     next_message_to_add_index,
-                    #     permanent_memory,
-                    # )
-                    break
+
+                # if current_tokens_used + tokens_to_add > send_token_limit:
+                #     # save_memory_trimmed_from_context_window(
+                #     #     full_message_history,
+                #     #     next_message_to_add_index,
+                #     #     permanent_memory,
+                #     # )
+                #     break
 
                 # Add the most recent message to the start of the current context,
                 #  after the two system prompts.
