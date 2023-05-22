@@ -160,6 +160,10 @@ class Agent:
                 f"ARGUMENTS = {Fore.CYAN}{arguments}{Style.RESET_ALL}",
             )
 
+            yield "NEXT ACTION: \n" + \
+                  f"COMMAND = {command_name}  \n" + \
+                  f"ARGUMENTS = {arguments} \n\n"
+
             if not cfg.continuous_mode and self.next_action_count == 0:
                 # ### GET USER AUTHORIZATION TO EXECUTE COMMAND ###
                 # Get key press: Prompt the user to press enter to continue or escape

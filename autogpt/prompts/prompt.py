@@ -87,37 +87,39 @@ def construct_main_ai_config(user_task:str = None) -> AIConfig:
     Returns:
         str: The prompt string
     """
-    config = AIConfig.load(CFG.ai_settings_file)
-    if CFG.skip_reprompt and config.ai_name:
-        logger.typewriter_log("Name :", Fore.GREEN, config.ai_name)
-        logger.typewriter_log("Role :", Fore.GREEN, config.ai_role)
-        logger.typewriter_log("Goals:", Fore.GREEN, f"{config.ai_goals}")
-        logger.typewriter_log(
-            "API Budget:",
-            Fore.GREEN,
-            "infinite" if config.api_budget <= 0 else f"${config.api_budget}",
-        )
-    elif config.ai_name:
-        logger.typewriter_log(
-            "Welcome back! ",
-            Fore.GREEN,
-            f"Would you like me to return to being {config.ai_name}?",
-            speak_text=True,
-        )
-        should_continue = clean_input(
-            f"""Continue with the last settings?
-Name:  {config.ai_name}
-Role:  {config.ai_role}
-Goals: {config.ai_goals}
-API Budget: {"infinite" if config.api_budget <= 0 else f"${config.api_budget}"}
-Continue ({CFG.authorise_key}/{CFG.exit_key}): """
-        )
-        if should_continue.lower() == CFG.exit_key:
-            config = AIConfig()
+#     config = AIConfig.load(CFG.ai_settings_file)
+#     if CFG.skip_reprompt and config.ai_name:
+#         logger.typewriter_log("Name :", Fore.GREEN, config.ai_name)
+#         logger.typewriter_log("Role :", Fore.GREEN, config.ai_role)
+#         logger.typewriter_log("Goals:", Fore.GREEN, f"{config.ai_goals}")
+#         logger.typewriter_log(
+#             "API Budget:",
+#             Fore.GREEN,
+#             "infinite" if config.api_budget <= 0 else f"${config.api_budget}",
+#         )
+#     elif config.ai_name:
+#         logger.typewriter_log(
+#             "Welcome back! ",
+#             Fore.GREEN,
+#             f"Would you like me to return to being {config.ai_name}?",
+#             speak_text=True,
+#         )
+#         should_continue = clean_input(
+#             f"""Continue with the last settings?
+# Name:  {config.ai_name}
+# Role:  {config.ai_role}
+# Goals: {config.ai_goals}
+# API Budget: {"infinite" if config.api_budget <= 0 else f"${config.api_budget}"}
+# Continue ({CFG.authorise_key}/{CFG.exit_key}): """
+#         )
+#         if should_continue.lower() == CFG.exit_key:
+#             config = AIConfig()
+#
+#     if not config.ai_name:
 
-    if not config.ai_name:
-        config = prompt_user(user_task)
-        config.save(CFG.ai_settings_file)
+
+    config = prompt_user(user_task)
+    config.save(CFG.ai_settings_file)
 
     # set the total api budget
     api_manager = ApiManager()

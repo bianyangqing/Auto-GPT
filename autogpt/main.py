@@ -29,7 +29,7 @@ CURRENT_CONTEXT = [
 
 
 def build_ai_config_msg(ai_config):
-    return "任务拆解完成\n" + "\n".join(ai_config.ai_goals)
+    return "Goals: \n" + "\n".join(ai_config.ai_goals)
 
 
 def run_auto_gpt(
@@ -198,4 +198,5 @@ def run_auto_gpt(
         triggering_prompt=DEFAULT_TRIGGERING_PROMPT,
         workspace_directory=workspace_directory,
     )
-    agent.start_interaction_loop()
+    for value in agent.start_interaction_loop():
+        yield value
