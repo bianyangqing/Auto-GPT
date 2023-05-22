@@ -57,8 +57,9 @@ def generate_context(prompt, relevant_memory, full_message_history, model):
 def chat_with_ai(
     agent, prompt, user_input, full_message_history, permanent_memory, token_limit, command_executed : list = []
 ):
-    commands = ",".join(command_executed)
-    user_input = f"After {commands} has bean executed, " + user_input
+    if len(command_executed) > 0 :
+        commands = ",".join(command_executed)
+        user_input = f"After {commands} has bean executed, " + user_input
 
     """Interact with the OpenAI API, sending the prompt, user input, message history,
     and permanent memory."""
