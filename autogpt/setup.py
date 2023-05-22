@@ -171,7 +171,8 @@ def mock_aiconfig_automatic(user_prompt) -> AIConfig:
     ai_goals = [
         "- Query historical data of store quality scores and see the scores for each factor.",
         "- Query the weight of each factor in the store quality score",
-        "- Give the three factors with the highest priority, according to the score of each factor of the store and the weight of each factor."]
+        "- Give the three factors with the highest priority, according to the score of each factor of the store and the weight of each factor."
+    ]
    # ai_goals = [
    #      "- Analyze your store's performance data and identify areas for improvement in order to increase your store quality score.",
    #      "- Provide specific, data-driven recommendations for improving your store's quality score, such as optimizing menu items, improving delivery times, and enhancing customer service.",
