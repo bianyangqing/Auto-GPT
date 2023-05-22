@@ -6,7 +6,24 @@ NOTE_TXT = "【您可以这么提问】：\n" \
            "＊How can I improve my store quality score？\n"
 MAX_BOXES = 20
 
-
+def run():
+    from autogpt.main import run_auto_gpt
+    run_auto_gpt(
+        continuous=True,
+        continuous_limit=None,
+        ai_settings=None,
+        skip_reprompt=False,
+        speak=False,
+        debug=False,
+        gpt3only=False,
+        gpt4only=False,
+        memory_type=None,
+        browser_name=None,
+        allow_downloads=False,
+        skip_news=False,
+        workspace_directory=None,
+        install_plugin_deps=False,
+    )
 
 def stream_chat(question, history=None, box_size=20):
 
@@ -39,27 +56,28 @@ def stream_chat1(question, history=None, box_size=20):
     for value in stream_chat(question, history):
         yield value
 
-with gr.Blocks() as demo:
-    state = gr.State([])
-    text_boxes = []
+def start():
+    with gr.Blocks() as demo:
+        state = gr.State([])
+        text_boxes = []
 
-    note = gr.Textbox(show_label=False,
-                      placeholder=NOTE_TXT,
-                      value=NOTE_TXT,
-                      lines=5,
-                      interactive=False).style(container=False)
+        note = gr.Textbox(show_label=False,
+                          placeholder=NOTE_TXT,
+                          value=NOTE_TXT,
+                          lines=5,
+                          interactive=False).style(container=False)
 
-    for i in range(MAX_BOXES):
-        if i % 2 == 0:
-            text_boxes.append(gr.Markdown(visible=False, label="Ask a Question："))
-        else:
-            text_boxes.append(gr.Markdown(visible=False, label="Reply："))
+        for i in range(MAX_BOXES):
+            if i % 2 == 0:
+                text_boxes.append(gr.Markdown(visible=False, label="Ask a Question："))
+            else:
+                text_boxes.append(gr.Markdown(visible=False, label="Reply："))
 
-    with gr.Row():
-        with gr.Column(scale=4):
-            txt = gr.Textbox(show_label=False, placeholder="Enter text and press enter", lines=3).style(
-                container=False)
-        with gr.Column(scale=1):
-            button = gr.Button("Generate")
-    button.click(stream_chat1, [txt, state], [state] + text_boxes + [txt])
-demo.queue().launch(share=True, inbrowser=True)
+        with gr.Row():
+            with gr.Column(scale=4):
+                txt = gr.Textbox(show_label=False, placeholder="Enter text and press enter", lines=3).style(
+                    container=False)
+            with gr.Column(scale=1):
+                button = gr.Button("Generate")
+        button.click(stream_chat1, [txt, state], [state] + text_boxes + [txt])
+    demo.queue().launch(share=True, inbrowser=True)
