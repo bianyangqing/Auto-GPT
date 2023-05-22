@@ -60,6 +60,7 @@ def chat_with_ai(
     if len(command_executed) > 0 :
         commands = ",".join(command_executed)
         user_input = f"After {commands} has bean executed, " + user_input
+    user_input += "You should only respond in JSON format as described above.\nEnsure the response can be parsed by Python json.loads"
 
     """Interact with the OpenAI API, sending the prompt, user input, message history,
     and permanent memory."""
