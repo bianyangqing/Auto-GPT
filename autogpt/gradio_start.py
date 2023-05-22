@@ -27,6 +27,8 @@ def run():
 
 def stream_chat(question, history=None, box_size=20):
 
+    run()
+
     if history is None:
         history = []
 
