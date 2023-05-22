@@ -55,8 +55,11 @@ def generate_context(prompt, relevant_memory, full_message_history, model):
 
 # TODO: Change debug from hardcode to argument
 def chat_with_ai(
-    agent, prompt, user_input, full_message_history, permanent_memory, token_limit
+    agent, prompt, user_input, full_message_history, permanent_memory, token_limit, command_executed : list = []
 ):
+    commands = ",".join(command_executed)
+    user_input = f"After {commands} has bean executed, " + user_input
+
     """Interact with the OpenAI API, sending the prompt, user input, message history,
     and permanent memory."""
     while True:

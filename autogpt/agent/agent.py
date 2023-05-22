@@ -71,6 +71,7 @@ class Agent:
         )
         self.last_memory_index = 0
         self.full_message_history = full_message_history
+        self.command_executed = []
         self.next_action_count = next_action_count
         self.command_registry = command_registry
         self.config = config
@@ -119,6 +120,7 @@ class Agent:
                     self.full_message_history,
                     self.memory,
                     cfg.fast_token_limit,
+                    self.command_executed
                 )  # TODO: This hardcodes the model to use GPT3.5. Make this an argument
 
             assistant_reply_json = fix_json_using_multiple_techniques(assistant_reply)
@@ -287,6 +289,7 @@ class Agent:
             # history
             if result is not None:
                 self.full_message_history.append(create_chat_message("system", result))
+                self.command_executed.append(command_name)
                 logger.typewriter_log("SYSTEM: ", Fore.YELLOW, result)
             else:
                 self.full_message_history.append(
