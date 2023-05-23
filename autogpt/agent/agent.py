@@ -22,7 +22,11 @@ from autogpt.utils import clean_input
 from autogpt.workspace import Workspace
 
 cfg = Config()
-
+def truncate_string(string, max_length=10):
+    if len(string) <= max_length:
+        return string
+    else:
+        return string[:max_length] + '...'
 class Agent:
     """Agent class for interacting with Auto-GPT.
 
@@ -164,9 +168,7 @@ class Agent:
                 f"ARGUMENTS = {Fore.CYAN}{arguments}{Style.RESET_ALL}",
             )
 
-            yield "NEXT ACTION: \n" + \
-                  f"COMMAND = {command_name}  \n" + \
-                  f"ARGUMENTS = {arguments} \n\n\n"
+            yield f"NEXT ACTION: {command_name} {truncate_string(arguments, 50)}\n\n"
 
             if not cfg.continuous_mode and self.next_action_count == 0:
                 # ### GET USER AUTHORIZATION TO EXECUTE COMMAND ###
