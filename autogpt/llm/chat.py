@@ -144,7 +144,7 @@ def chat_with_ai(
                 # Add the most recent message to the start of the current context,
                 #  after the two system prompts.
                 # 只添加command返回的数据
-                if full_message_history[next_message_to_add_index] == "system":
+                if full_message_history[next_message_to_add_index]["role"] == "system":
                     current_context.insert(
                         insertion_index, full_message_history[next_message_to_add_index]
                     )
