@@ -349,7 +349,8 @@ class Agent:
         current_context = self.config.prompt_generator.generate_current_context()
         history = "\n"
         for msg in self.full_message_history:
-            history += msg["content"] + "\n"
+            if msg["role"] == "system":
+                history += msg["content"] + "\n"
         user_require = '''
   Response format  :
  -factor to improve:reason for this factor
@@ -362,5 +363,4 @@ class Agent:
 
         massage = [{"role": "user", "content": current_context + history + user_require}]
         prompt = create_chat_completion(massage, cfg.fast_llm_model)
-        logger.info()
         return {"args": prompt}
