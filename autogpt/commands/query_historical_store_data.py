@@ -6,7 +6,7 @@ from autogpt.commands.command import command
 MOCK_DATE = """
 each factor score of the store with id=223524545 :
 Operating hours score:40 \\n
-Peak hours score:76 \\n
+Peak hours score:32 \\n
 Minimum delivery score :80 \\n
 Store richness score :32 \\n
 Service richness score :80 \\n
@@ -17,7 +17,7 @@ Store score :70 \\n
 Quality commodity rate :80 \\n
 Menu richness score :68 \\n
 Business responsibility cancellation rate score :70 \\n
-Meal reporting rate :80 
+Meal reporting rate :41 
 """
 
 @command(
