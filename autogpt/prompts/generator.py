@@ -144,6 +144,9 @@ class PromptGenerator:
         else:
             return "\n".join(f"{i+1}. {item}" for i, item in enumerate(items))
 
+    def generate_current_context(self):
+        return f"Information about the store:\n{self._generate_numbered_list(self.current_context)}"
+
     def generate_prompt_string(self) -> str:
         """
         Generate a prompt string based on the constraints, commands, resources,
@@ -164,3 +167,4 @@ class PromptGenerator:
             "\nResponse"
             f" Format: \n{formatted_response_format} \n"
         )
+

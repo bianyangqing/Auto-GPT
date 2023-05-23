@@ -2,7 +2,7 @@ from datetime import datetime
 
 from colorama import Fore, Style
 import time
-
+from autogpt.config.config import Config
 from autogpt.app import execute_command, get_command
 from autogpt.config import Config
 from autogpt.json_utils.json_fix_llm import fix_json_using_multiple_techniques
@@ -21,6 +21,7 @@ from autogpt.spinner import Spinner
 from autogpt.utils import clean_input
 from autogpt.workspace import Workspace
 
+cfg = Config()
 
 class Agent:
     """Agent class for interacting with Auto-GPT.
@@ -152,6 +153,9 @@ class Agent:
                 assistant_reply_json,
                 NEXT_ACTION_FILE_NAME,
             )
+            # 如果是调用chatgpt，走单独的逻辑产出prompt
+            if command_name == "chatgpt_expert":
+                arguments = self.build_chat_gpt_prompt()
 
             logger.typewriter_log(
                 "NEXT ACTION: ",
@@ -337,3 +341,23 @@ class Agent:
             [{"role": "user", "content": feedback_prompt + feedback_thoughts}],
             llm_model,
         )
+
+    def build_chat_gpt_prompt(self):
+
+        current_context = self.config.prompt_generator.generate_current_context()
+        history = "\n".join(self.full_message_history)
+        user_require = '''
+        
+  Response formate  :
+ -factor to improve:reason for this factor
+ -factor to improve:reason for this factor
+ -factor to improve:reason for this factor
+
+  User: Give the three factors with the highest priority, according to the score of each factor of the store and the weight of each factor.
+  PAY ATTENTION:Priority is sorted by low score and high weight.
+'''
+
+        massage = [{"role": "user", "content": current_context + history + user_require}]
+        prompt = create_chat_completion(massage, cfg.fast_llm_model)
+        logger.info()
+        return {"args": prompt}
