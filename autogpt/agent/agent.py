@@ -351,7 +351,7 @@ class Agent:
         for msg in self.full_message_history:
             history += msg["content"] + "\n"
         user_require = '''
-  Response formate  :
+  Response format  :
  -factor to improve:reason for this factor
  -factor to improve:reason for this factor
  -factor to improve:reason for this factor
