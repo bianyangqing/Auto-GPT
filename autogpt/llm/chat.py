@@ -144,14 +144,14 @@ def chat_with_ai(
                 # Add the most recent message to the start of the current context,
                 #  after the two system prompts.
                 # 只添加command返回的数据
-                if full_message_history[next_message_to_add_index] != "system":
-                    continue
-                current_context.insert(
-                    insertion_index, full_message_history[next_message_to_add_index]
-                )
+                if full_message_history[next_message_to_add_index] == "system":
+                    current_context.insert(
+                        insertion_index, full_message_history[next_message_to_add_index]
+                    )
 
-                # Count the currently used tokens
-                current_tokens_used += tokens_to_add
+                    # Count the currently used tokens
+                    current_tokens_used += tokens_to_add
+
 
                 # Move to the next most recent message in the full message history
                 next_message_to_add_index -= 1
