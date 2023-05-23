@@ -360,6 +360,7 @@ class Agent:
   User: Give the three factors with the highest priority, according to the score of each factor of the store and the weight of each factor.
   PAY ATTENTION:Priority is sorted by low score and high weight.
 '''
+        time.sleep(5)
 
         massage = [{"role": "user", "content": current_context + history + user_require}]
         prompt = create_chat_completion(massage, cfg.fast_llm_model)

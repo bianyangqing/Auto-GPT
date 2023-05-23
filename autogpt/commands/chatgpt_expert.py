@@ -2,6 +2,7 @@
 from __future__ import annotations
 from autogpt.llm.llm_utils import create_chat_completion
 from autogpt.config.config import Config
+import time
 
 from autogpt.commands.command import command
 
@@ -24,5 +25,6 @@ def ask(args: str) -> str:
     Returns:
         A result string from related docs
     """
+    time.sleep(5)
     massage=[{"role": "user", "content": args}]
     return create_chat_completion( massage, cfg.fast_llm_model)
