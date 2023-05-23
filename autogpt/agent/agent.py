@@ -347,9 +347,10 @@ class Agent:
     def build_chat_gpt_prompt(self):
 
         current_context = self.config.prompt_generator.generate_current_context()
-        history = "\n".join(self.full_message_history)
+        history = "\n"
+        for msg in self.full_message_history:
+            history += msg["content"] + "\n"
         user_require = '''
-        
   Response formate  :
  -factor to improve:reason for this factor
  -factor to improve:reason for this factor
