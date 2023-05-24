@@ -390,3 +390,5 @@ class Agent:
         We have completed the task step by step. 
         Please help me sort out the final plan to complete the task according to the above information
         """
+
+        return task + current_context + history + user_require
