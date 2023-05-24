@@ -1,9 +1,10 @@
 
 import gradio as gr
 import time
+from autogpt.trans_utils.trans_util import translate_chinese_to_english
 
 NOTE_TXT = "【您可以这么提问】：\n" \
-           "＊How can I improve my store quality score？\n"
+           "＊怎么提高我的店铺质量分数？\n"
 MAX_BOXES = 20
 
 def run(user_task: str =None):
@@ -30,6 +31,8 @@ def run(user_task: str =None):
 def stream_chat(question, history=None, box_size=20):
 
 
+
+    question = translate_chinese_to_english(question)
 
     if history is None:
         history = []

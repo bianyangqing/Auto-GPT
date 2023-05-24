@@ -3,7 +3,7 @@ import logging
 import sys
 from pathlib import Path
 
-from autogpt.utils.trans_util import translate_english_to_chinese
+from autogpt.trans_utils.trans_util import translate_english_to_chinese
 from colorama import Fore, Style
 
 from autogpt.agent.agent import Agent

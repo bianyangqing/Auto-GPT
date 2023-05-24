@@ -55,3 +55,4 @@ vcrpy
 pytest-recording
 pytest-xdist
 gradio
+translate

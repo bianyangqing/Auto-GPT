@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 
-from autogpt.utils.trans_util import translate_english_to_chinese
+from autogpt.trans_utils.trans_util import translate_english_to_chinese
 from colorama import Fore, Style
 import time
 from autogpt.config.config import Config
