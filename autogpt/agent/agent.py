@@ -429,4 +429,4 @@ IM在线回复率:IM online response rate score
         logger.info("build_result prompt:{}".format(p))
         massage = [{"role": "user", "content": p}]
 
-        return create_chat_completion(massage, cfg.fast_llm_model)
+        return create_chat_completion(massage, cfg.fast_llm_model).replace("\n", "  \n")
