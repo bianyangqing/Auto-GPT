@@ -159,8 +159,7 @@ class Agent:
                 NEXT_ACTION_FILE_NAME,
             )
 
-            if command_name == "task_complete":
-                yield self.build_result()
+
             # 如果是调用chatgpt，走单独的逻辑产出prompt
             if command_name == "chatgpt_expert":
                 arguments = self.build_chat_gpt_prompt()
@@ -175,6 +174,9 @@ class Agent:
             )
 
             yield f"NEXT ACTION: {command_name}, PARAMS:{truncate_string(json.dumps(arguments), 50)}\n\n"
+
+            if command_name == "task_complete":
+                yield self.build_result()
 
             if not cfg.continuous_mode and self.next_action_count == 0:
                 # ### GET USER AUTHORIZATION TO EXECUTE COMMAND ###
