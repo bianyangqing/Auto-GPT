@@ -36,7 +36,7 @@ def stream_chat(question, history=None, box_size=20):
 
     content = ""
     for value in run(translate_chinese_to_english(question)):
-        time.sleep(1)
+        # time.sleep(1)
         if len(content) > 0 and len(history) > 0:
             # history中去掉最后一个元素
             history.pop()

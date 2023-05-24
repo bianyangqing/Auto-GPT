@@ -25,6 +25,6 @@ def ask(args: str) -> str:
     Returns:
         A result string from related docs
     """
-    time.sleep(5)
+    # time.sleep(5)
     massage=[{"role": "user", "content": args}]
     return create_chat_completion( massage, cfg.fast_llm_model)

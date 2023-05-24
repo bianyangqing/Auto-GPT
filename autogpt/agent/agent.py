@@ -126,7 +126,7 @@ class Agent:
                     "Continuous Limit Reached: ", Fore.YELLOW, f"{cfg.continuous_limit}"
                 )
                 break
-            time.sleep(5)
+            # time.sleep(5)
             # Send message to AI, get response
             with Spinner("Thinking... "):
                 assistant_reply = chat_with_ai(
@@ -384,7 +384,7 @@ class Agent:
 '''
         p = current_context + history + user_require
         logger.info("build_chat_gpt_prompt prompt:{}".format(p))
-        time.sleep(5)
+        # time.sleep(5)
 
         # massage = [{"role": "user", "content": p}]
         # prompt = create_chat_completion(massage, cfg.fast_llm_model)
