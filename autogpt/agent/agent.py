@@ -390,5 +390,9 @@ class Agent:
         We have completed the task step by step. 
         Please help me sort out the final plan to complete the task according to the above information
         """
+        p = task + current_context + history + user_require
 
-        return task + current_context + history + user_require
+        logger.info("build_result prompt:{}".format(p))
+        massage = [{"role": "user", "content": p}]
+
+        return create_chat_completion(massage, cfg.fast_llm_model)
