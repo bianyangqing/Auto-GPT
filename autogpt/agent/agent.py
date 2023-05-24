@@ -158,9 +158,14 @@ class Agent:
                 assistant_reply_json,
                 NEXT_ACTION_FILE_NAME,
             )
+
+            if command_name == "task_complete":
+                yield self.build_result()
             # 如果是调用chatgpt，走单独的逻辑产出prompt
             if command_name == "chatgpt_expert":
                 arguments = self.build_chat_gpt_prompt()
+
+
 
             logger.typewriter_log(
                 "NEXT ACTION: ",
@@ -368,3 +373,20 @@ class Agent:
         # massage = [{"role": "user", "content": p}]
         # prompt = create_chat_completion(massage, cfg.fast_llm_model)
         return {"args": p}
+
+    def build_result(self):
+        task = ""
+        task += f"\nTASK:{self.config.ai_task}\n"
+        task += "\nLet's follow the steps to complete the TASK:\n"
+        for i, goal in enumerate(self.config.ai_goals):
+            task += f"{i + 1}. {goal}\n"
+        current_context = self.config.prompt_generator.generate_current_context()
+        history = "\n"
+        for msg in self.full_message_history:
+            if msg["role"] == "system":
+                history += msg["content"] + "\n"
+        user_require = """
+        USER：
+        We have completed the task step by step. 
+        Please help me sort out the final plan to complete the task according to the above information
+        """
