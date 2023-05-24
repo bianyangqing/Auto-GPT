@@ -30,7 +30,7 @@ COMMAND_NAMES={
     "business_expert": "业务知识专家",
     "chatgpt_expert": "大语言模型专家",
     "query_historical_store_data": "门店质量分查询专家",
-    "task_complete": "门店质量分查询专家",
+    "task_complete": "结束",
 }
 
 def truncate_string(string, max_length=10):
@@ -185,7 +185,7 @@ class Agent:
 
             arguments_copy = arguments
             if "args" in arguments_copy:
-                arguments_copy["args"] = translate_english_to_chinese(arguments_copy["args"])
+                arguments_copy["args"] = translate_english_to_chinese(truncate_string(arguments_copy["args"], 300))
 
             yield f"第{self.cycle_count}步:: {COMMAND_NAMES[command_name]}, PARAMS:{truncate_string(json.dumps(arguments_copy), 50)}\n\n"
 
@@ -375,13 +375,12 @@ class Agent:
                 history += msg["content"] + "\n"
         user_require = '''
   Response format  :
- -factor to improve:reason for this factor
- -factor to improve:reason for this factor
- -factor to improve:reason for this factor
+ -factor to improve:reasons why this factor has high priority
+ -factor to improve:reasons why this factor has high priority
+ -factor to improve:reasons why this factor has high priority
 
   User: Give the three factors with the highest priority, according to the score of each factor of the store and the weight of each factor.
   PAY ATTENTION:Priority is sorted by low score and high weight.
-  注意:请用中文返回，不要用英文
 '''
         p = current_context + history + user_require
         logger.info("build_chat_gpt_prompt prompt:{}".format(p))
@@ -404,8 +403,26 @@ class Agent:
                 history += msg["content"] + "\n"
         user_require = """
         USER：
-        We have completed the task step by step. 
-        Please help me sort out the final plan to complete the task according to the above information
+        我们已经一步步的完成了任务。
+        请根据上面的内容，整理出任务的解决方案，请按照以下的格式输出：
+        -需要优化的因子:为什么这个因子的优先级很高
+        -需要优化的因子:为什么这个因子的优先级很高
+        -需要优化的因子:为什么这个因子的优先级很高
+        
+        以下是对英文专业术语的翻译，供你参考：
+营业时长:Operating hours score
+高峰营业时长:Peak operating hours score
+最低起送价:Minimum delivery price score
+店装丰富度:Store richness score
+服务丰富度:Service richness score
+营销活动丰富:Marketing activity richness score
+近7日差评人工回复率:Manual response rate of negative comments in recent 7 days score
+IM在线回复率:IM online response rate score
+店铺评分:Store rating score
+优质商品率:Quality commodity rate score
+菜单丰富度:Menu richness score
+商责取消率:Business responsibility cancellation rate score
+出餐上报率:Reporting rate of meals served score
         """
         p = task + current_context + history + user_require
 
