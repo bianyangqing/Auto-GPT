@@ -1,6 +1,6 @@
 from translate import Translator
 
-B = translation.encode()
+
 
 
 def translate_english_to_chinese(text):
