@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 
 from colorama import Fore, Style
@@ -168,7 +169,7 @@ class Agent:
                 f"ARGUMENTS = {Fore.CYAN}{arguments}{Style.RESET_ALL}",
             )
 
-            yield f"NEXT ACTION: {command_name} {truncate_string(arguments, 50)}\n\n"
+            yield f"NEXT ACTION: {command_name}, PARAMS:{truncate_string(json.dumps(arguments), 50)}\n\n"
 
             if not cfg.continuous_mode and self.next_action_count == 0:
                 # ### GET USER AUTHORIZATION TO EXECUTE COMMAND ###
