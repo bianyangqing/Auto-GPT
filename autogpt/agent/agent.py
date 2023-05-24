@@ -364,6 +364,6 @@ class Agent:
         logger.info("build_chat_gpt_prompt prompt:{}".format(p))
         time.sleep(5)
 
-        massage = [{"role": "user", "content": p}]
-        prompt = create_chat_completion(massage, cfg.fast_llm_model)
-        return {"args": prompt}
+        # massage = [{"role": "user", "content": p}]
+        # prompt = create_chat_completion(massage, cfg.fast_llm_model)
+        return {"args": p}
