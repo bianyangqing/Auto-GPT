@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 
+from autogpt.utils.trans_util import translate_english_to_chinese
 from colorama import Fore, Style
 import time
 from autogpt.config.config import Config
@@ -23,6 +24,15 @@ from autogpt.utils import clean_input
 from autogpt.workspace import Workspace
 
 cfg = Config()
+
+
+COMMAND_NAMES={
+    "business_expert": "业务知识专家",
+    "chatgpt_expert": "大语言模型专家",
+    "query_historical_store_data": "门店质量分查询专家",
+    "task_complete": "门店质量分查询专家",
+}
+
 def truncate_string(string, max_length=10):
     if len(string) <= max_length:
         return string
@@ -167,13 +177,17 @@ class Agent:
 
 
             logger.typewriter_log(
-                "NEXT ACTION: ",
+                f"第{self.cycle_count}步: ",
                 Fore.CYAN,
-                f"COMMAND = {Fore.CYAN}{command_name}{Style.RESET_ALL}  "
-                f"ARGUMENTS = {Fore.CYAN}{arguments}{Style.RESET_ALL}",
+                f"调用专家工具 = {Fore.CYAN}{command_name}{Style.RESET_ALL}  "
+                f"入参 = {Fore.CYAN}{arguments}{Style.RESET_ALL}",
             )
 
-            yield f"NEXT ACTION: {command_name}, PARAMS:{truncate_string(json.dumps(arguments), 50)}\n\n"
+            arguments_copy = arguments
+            if "args" in arguments_copy:
+                arguments_copy["args"] = translate_english_to_chinese(arguments_copy["args"])
+
+            yield f"第{self.cycle_count}步:: {COMMAND_NAMES[command_name]}, PARAMS:{truncate_string(json.dumps(arguments_copy), 50)}\n\n"
 
             if command_name == "task_complete":
                 yield self.build_result()
@@ -367,6 +381,7 @@ class Agent:
 
   User: Give the three factors with the highest priority, according to the score of each factor of the store and the weight of each factor.
   PAY ATTENTION:Priority is sorted by low score and high weight.
+  注意:请用中文返回，不要用英文
 '''
         p = current_context + history + user_require
         logger.info("build_chat_gpt_prompt prompt:{}".format(p))

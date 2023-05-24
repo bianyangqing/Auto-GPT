@@ -3,6 +3,7 @@ import logging
 import sys
 from pathlib import Path
 
+from autogpt.utils.trans_util import translate_english_to_chinese
 from colorama import Fore, Style
 
 from autogpt.agent.agent import Agent
@@ -29,7 +30,8 @@ CURRENT_CONTEXT = [
 
 
 def build_ai_config_msg(ai_config):
-    return "Goals: \n" + "\n".join(ai_config.ai_goals) + "\n\n\n"
+    str_list = [translate_english_to_chinese(s) for s in ai_config.ai_goals]
+    return "\n目标拆解: \n" + "\n".join(str_list) + "\n\n\n"
 
 
 def run_auto_gpt(
