@@ -3,8 +3,17 @@ import gradio as gr
 import time
 from autogpt.trans_utils.trans_util import (translate_chinese_to_english,translate_english_to_chinese)
 
-NOTE_TXT = "【您可以这么提问】：\n" \
-           "＊怎么提高我的店铺质量分数？\n"
+NOTE_TXT = """
+【您可以试试这个例子】：
+＊怎么提高我的店铺质量分数？
+
+
+【当前版本说明】：
+＊仅支持"店铺质量分优化"一个问题
+＊大模型推理比较耗时，请耐心等待
+＊如果遇到页面报错 请刷新后重试
+"""
+
 MAX_BOXES = 20
 
 def run(user_task: str =None):
