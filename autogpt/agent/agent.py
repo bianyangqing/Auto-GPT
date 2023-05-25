@@ -184,10 +184,10 @@ class Agent:
             )
 
             arguments_copy = arguments
-            if "args" in arguments_copy:
-                arguments_copy["args"] = translate_english_to_chinese(arguments_copy["args"])
+            # if "args" in arguments_copy:
+            #     arguments_copy["args"] = translate_english_to_chinese(arguments_copy["args"])
             if command_name in COMMAND_NAMES:
-                yield f"第{self.cycle_count}步: {COMMAND_NAMES[command_name]}, 入参：{json.dumps(arguments_copy)}\n\n"
+                yield f"第{self.cycle_count}步: {COMMAND_NAMES[command_name]}, 入参：{truncate_string(json.dumps(arguments_copy))}\n\n"
 
             if command_name == "task_complete":
                 yield self.build_result()
@@ -430,3 +430,22 @@ IM在线回复率:IM online response rate score
         massage = [{"role": "user", "content": p}]
 
         return create_chat_completion(massage, cfg.fast_llm_model).replace("\n", "  \n")
+
+
+    def trans_by_gpt(self, input):
+        prompt = """
+        请把json中的value从英文翻译成中文。
+        例子：
+        
+        输入：{"task":"determine weight of each factor in store quality score"}
+        输出：{"task":"确定商品质量分中每个影子的权重"}
+        
+        输入：{"args":"Hello,world!"}
+        输出：{"args":"你好，世界！"}
+        
+        """ + f"输入：{input} \n 输出："
+
+        massage = [{"role": "user", "content": prompt}]
+
+        return create_chat_completion( massage, cfg.fast_llm_model)
+
