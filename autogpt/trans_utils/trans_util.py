@@ -6,7 +6,7 @@ from translate import Translator
 def translate_english_to_chinese(text):
     translator = Translator(to_lang="zh")
     translation = translator.translate(text)
-    translation = translation.encode('utf-8').decode('utf-8')
+    translation = translation.encode('unicode-escape').decode('utf-8')
     return translation
 def translate_chinese_to_english(text):
     translator = Translator(to_lang="en", from_lang="zh")
