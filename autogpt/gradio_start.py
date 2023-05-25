@@ -1,7 +1,7 @@
 
 import gradio as gr
 import time
-from autogpt.trans_utils.trans_util import translate_chinese_to_english
+from autogpt.trans_utils.trans_util import (translate_chinese_to_english,translate_english_to_chinese)
 
 NOTE_TXT = "【您可以这么提问】：\n" \
            "＊怎么提高我的店铺质量分数？\n"
@@ -35,7 +35,10 @@ def stream_chat(question, history=None, box_size=20):
         history = []
 
     content = ""
-    for value in run(translate_chinese_to_english(question)):
+    # for value in run(translate_chinese_to_english(question)):
+
+    for value in range(10):
+        value = translate_english_to_chinese("Hello, world!")
         # time.sleep(1)
         if len(content) > 0 and len(history) > 0:
             # history中去掉最后一个元素
