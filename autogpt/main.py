@@ -31,7 +31,7 @@ CURRENT_CONTEXT = [
 
 def build_ai_config_msg(ai_config):
     str_list = [translate_english_to_chinese(s) for s in ai_config.ai_goals]
-    return " \n目标拆解:  \n" + "  \n".join(str_list) + " \n\n\n"
+    return "  \n目标拆解:  \n" + "  \n".join(str_list) + " \n\n\n"
 
 
 def run_auto_gpt(
