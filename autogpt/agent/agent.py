@@ -187,7 +187,7 @@ class Agent:
             # if "args" in arguments_copy:
             #     arguments_copy["args"] = translate_english_to_chinese(arguments_copy["args"])
             if command_name in COMMAND_NAMES:
-                yield f"第{self.cycle_count}步: {COMMAND_NAMES[command_name]}, 入参：{truncate_string(json.dumps(arguments_copy))}\n\n"
+                yield f"第{self.cycle_count}步: {COMMAND_NAMES[command_name]}, 入参：{self.trans_by_gpt(json.dumps(arguments_copy))}\n\n"
 
             if command_name == "task_complete":
                 yield self.build_result()
