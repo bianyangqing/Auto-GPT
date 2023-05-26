@@ -4,7 +4,8 @@ from __future__ import annotations
 from autogpt.commands.command import command
 
 MOCK = """
-If you want to go online again, please contact your sales manager and ask him to help you with the online operation
+Click [HERE] to contact your sales manager, 
+Ask him to help you with the online operation
 """
 
 @command(
