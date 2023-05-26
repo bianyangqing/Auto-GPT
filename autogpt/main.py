@@ -133,7 +133,7 @@ def run_auto_gpt(
     command_registry = CommandRegistry()
 
     command_categories = [
-        "autogpt.commands.query_historical_store_data",
+        # "autogpt.commands.query_historical_store_data",
         # "autogpt.commands.store_quality_score_improvement_adviser",
         "autogpt.commands.business_terms_or_rules_explain",
         "autogpt.commands.chatgpt_expert",
