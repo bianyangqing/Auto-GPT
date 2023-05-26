@@ -377,12 +377,10 @@ class Agent:
                 history += msg["content"] + "\n"
         user_require = '''
   Response format  :
- -factor to improve:reasons why this factor has high priority
- -factor to improve:reasons why this factor has high priority
- -factor to improve:reasons why this factor has high priority
-
-  User: Give the three factors with the highest priority, according to the score of each factor of the store and the weight of each factor.
-  PAY ATTENTION:Priority is sorted by low score and high weight.
+ -Reason for going offline:XX
+ -How to get back online:XX
+ 
+  User: Why was my store taken offline, and how can I apply to go online?
 '''
         p = current_context + history + user_require
         logger.info("build_chat_gpt_prompt prompt:{}".format(p))
@@ -407,24 +405,9 @@ class Agent:
         USER：
         我们已经一步步的完成了任务。
         请根据上面的内容，整理出任务的解决方案，请按照以下的格式输出：
-        -需要优化的因子:为什么这个因子的优先级很高
-        -需要优化的因子:为什么这个因子的优先级很高
-        -需要优化的因子:为什么这个因子的优先级很高
+        -下线原因：因为XX原因，您的店铺被下线了
+        -如何上线：重新需要做什么
         
-        以下是对英文专业术语的翻译，供你参考：
-营业时长:Operating hours score
-高峰营业时长:Peak operating hours score
-最低起送价:Minimum delivery price score
-店装丰富度:Store richness score
-服务丰富度:Service richness score
-营销活动丰富:Marketing activity richness score
-近7日差评人工回复率:Manual response rate of negative comments in recent 7 days score
-IM在线回复率:IM online response rate score
-店铺评分:Store rating score
-优质商品率:Quality commodity rate score
-菜单丰富度:Menu richness score
-商责取消率:Business responsibility cancellation rate score
-出餐上报率:Reporting rate of meals served score
         """
         p = task + current_context + history + user_require
 
