@@ -5,7 +5,7 @@ from autogpt.trans_utils.trans_util import (translate_chinese_to_english,transla
 
 NOTE_TXT = """
 【您可以试试这个例子】：
-＊怎么提高我的店铺质量分数？
+＊我的店铺为什么被下线了，怎么申请上线？
 
 
 【当前版本说明】：

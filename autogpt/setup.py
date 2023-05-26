@@ -65,8 +65,8 @@ def prompt_user(user_task: str = None) -> AIConfig:
 
     else:
         try:
-            # return generate_aiconfig_automatic(user_desire)
-            return mock_aiconfig_automatic(user_desire)
+            return generate_aiconfig_automatic(user_desire)
+            # return mock_aiconfig_automatic(user_desire)
         except Exception as e:
             logger.typewriter_log(
                 "Unable to automatically generate AI Config based on user desire.",
