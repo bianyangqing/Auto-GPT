@@ -30,7 +30,7 @@ COMMAND_NAMES={
     "business_expert": "业务知识专家",
     "chatgpt_expert": "大语言模型专家",
     "query_historical_store_data": "门店质量分查询专家",
-    "query_store_status": "店铺状态查询专家",
+    "query_offline_reason": "店铺状态查询专家",
     "task_complete": "结束",
 }
 
