@@ -13,7 +13,7 @@ If you want to go back online, please contact your account manager
     "1. Check the current status of the store; 2. Check the reason for going offline",
     '"store_id": "<store_id>"',
 )
-def query_store_status(args: str) -> str:
+def query_store_status(store_id: str) -> str:
     """
     Invoke the vector retrieval service to query and question-related doc
 
