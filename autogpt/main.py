@@ -21,7 +21,7 @@ from autogpt.utils import (
 )
 from autogpt.workspace import Workspace
 from scripts.install_plugin_deps import install_plugin_dependencies
-STORE_ID = "12343516"
+STORE_ID = "223524545"
 STORE_NAME = "KFC"
 CURRENT_CONTEXT = [
     f"store id:{STORE_ID}",
